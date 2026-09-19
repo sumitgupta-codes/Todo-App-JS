@@ -121,7 +121,7 @@ todoList.addEventListener("click", (e) => {
       return todo;
     });
 
-    localStorage.setItem("todos",JSON.stringify(todos))
+    localStorage.setItem("todos", JSON.stringify(todos));
     renderTodo();
   }
 });
@@ -134,7 +134,7 @@ function deleteTodo(id) {
     }
   });
 
-    localStorage.setItem("todos",JSON.stringify(todos))
+  localStorage.setItem("todos", JSON.stringify(todos));
   renderTodo();
 }
 
