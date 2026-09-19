@@ -1,30 +1,4 @@
-let todos = [
-//   {
-//     id: Date.now(),
-//     text: "Learn JavaScript",
-//     isCompleted: false,
-//   },
-  //   {
-  //     id: Date.now() + 1,
-  //     text: "Practice DOM manipulation",
-  //     isCompleted: false,
-  //   },
-  //   {
-  //     id: Date.now() + 2,
-  //     text: "Build a Todo List",
-  //     isCompleted: false,
-  //   },
-  //   {
-  //     id: Date.now() + 3,
-  //     text: "Practice Event Handling",
-  //     isCompleted: true,
-  //   },
-  //   {
-  //     id: Date.now() + 4,
-  //     text: "Revise JavaScript",
-  //     isCompleted: false,
-  //   },
-];
+let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
 const todoForm = document.querySelector("#todo-form"); //form
 const todoInput = document.querySelector("#todo-input"); //input
@@ -58,8 +32,8 @@ todoForm.addEventListener("submit", (e) => {
       return todo;
     });
 
-    update()
-    
+    localStorage.setItem("todos", JSON.stringify(todos));
+    update();
   } else {
     //adding
     let newTodo = {
@@ -69,6 +43,7 @@ todoForm.addEventListener("submit", (e) => {
     };
 
     todos.push(newTodo);
+    localStorage.setItem("todos", JSON.stringify(todos)); // array ko string me convert kroge to [object object] aise show hoga jo ki valid nahi hai isliye ham json.stringify use krte hai valid string ke liye.
   }
 
   todoInput.value = "";
@@ -146,6 +121,7 @@ todoList.addEventListener("click", (e) => {
       return todo;
     });
 
+    localStorage.setItem("todos",JSON.stringify(todos))
     renderTodo();
   }
 });
@@ -158,6 +134,7 @@ function deleteTodo(id) {
     }
   });
 
+    localStorage.setItem("todos",JSON.stringify(todos))
   renderTodo();
 }
 
@@ -177,15 +154,15 @@ function startEdit(id) {
   cancelBtn.classList.remove("hidden");
 }
 
-function update(){
-    editTodoId = null;
-    formBtn.classList.remove("bg-orange-500");
-    formBtn.textContent = "Add";
-    cancelBtn.classList.add("hidden");
+function update() {
+  editTodoId = null;
+  formBtn.classList.remove("bg-orange-500");
+  formBtn.textContent = "Add";
+  cancelBtn.classList.add("hidden");
 }
 
 cancelBtn.addEventListener("click", (e) => {
   e.preventDefault();
   todoInput.value = "";
-  update()
+  update();
 });
