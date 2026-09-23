@@ -19,13 +19,16 @@
             <form id="todo-form" action="" class="flex gap-5">
                 <input id="todo-input" class="border flex-1 border-black p-2 rounded-lg" type="text"
                     placeholder="Enter task description....">
-                <div class="flex flex-col items-center">
-                    <button id="form-btn" class="px-4 py-2 text-xl text-white bg-indigo-400 rounded-xl hover:bg-indigo-500 transition duration-200">Add</button>
-                    <a id="cancel-btn" href="#" class="hidden text-red-500 hover:text-red-700 underline cursor-pointer transition duration-200">Cancel</a>
+                <div class="flex flex-col items-center relative">
+                    <button id="form-btn"
+                        class="px-4 py-2 text-xl text-white bg-indigo-400 rounded-xl hover:bg-indigo-500 transition duration-200">Add</button>
+                    <p id="cancel-btn" href="#"
+                        class="hidden absolute top-12 text-red-500 hover:text-red-700 underline cursor-pointer transition duration-200">
+                        Cancel</p>
                 </div>
             </form>
 
-            <div class="flex justify-between pt-6 pb-1 text-xs border-b border-black">
+            <div class="flex justify-between pt-6 pb-1 text-xs border-b border-black mt-5">
                 <p id="task-count">TASKS(0)</p>
                 <p id="complete-count">COMPLETED(0)</p>
             </div>
